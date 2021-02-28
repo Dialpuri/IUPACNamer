@@ -6,21 +6,20 @@
 
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
-<link href = "{{ url_for('static', filename='css/homeStyle.css') }}" rel = "stylesheet" type = "text/css"/> 
-
 <h2 class = "header">What is the IUPAC name for this molecule?</h2>
-
+<link href = "{{ url_for('static', filename='css/homeStyle.css') }}" rel = "stylesheet" type = "text/css"/> 
+<script src="{{ url_for('static', filename='js/test.js') }}" ></script>
 
 <div class = "container">
   <div style="width:50%" class = "image">  
     <img src = '{{image}}'/>
   </div>
   <div style="width:50%" class = "image">  
-    <form method="post">
-        {{ render_field(form.guess) }}
-      <input type="submit" value="Check your answer">
-    </form>
+      <input class = "input" name = "guess" id = "guess"/>
+      <button type="submit" value="Check your answer" onClick = checkButtonPressed()>Submit your guess</button>
   </div>
 </div>
 
 {%endblock%}
+
+<!--        {{ render_field(form.guess) }}      -->
