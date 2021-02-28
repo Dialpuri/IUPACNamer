@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{%block title %} {%endblock%}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    <link rel="stylesheet" href="/static/css/base.css">
+
+  </head>
+
+  <body>
+    
+    <h1>IUPAC Namer</h1>
+
+    <div class="w3-bar w3-light-grey w3-center">
+      <a href="/easy" style="width:25%" class="w3-bar-item w3-button w3-mobile iupac-red">Easy</a>
+      <a href="/medium" style="width:25%" class="w3-bar-item w3-button w3-mobile iupac-yellow">Medium</a>
+      <a href="/hard" style="width:25%" class="w3-bar-item w3-button w3-mobile iupac-green">Hard</a>
+      <a href="/insane" style="width:25%" class="w3-bar-item w3-button w3-mobile iupac-blue">Insane</a>
+    </div>
+
+    {% block content %}
+    
+    {% endblock %}
+    
+    <footer class = "footer">
+      <div class = "w3-bar w3-center">
+        <div style = "width: 25%" class ="w3-bar-item w3-mobile iupac-red"></div>
+        <div style = "width: 25%"  class ="w3-bar-item w3-mobile iupac-yellow"></div>
+        <div style = "width: 25%" class ="w3-bar-item w3-mobile iupac-green"></div>
+        <div style = "width: 25%" class ="w3-bar-item w3-mobile iupac-blue"></div>
+
+      </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>
