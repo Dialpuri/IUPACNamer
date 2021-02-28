@@ -1,0 +1,16 @@
+.container {
+    border: 3px solid #fff;
+    padding: 20px;  
+  }
+
+.image { 
+    width: 50%;
+    float: left;
+    padding: 20px;
+}
+
+.grid-child {
+    margin-left: 30px;
+    height: 200px;
+    background: black;
+}
