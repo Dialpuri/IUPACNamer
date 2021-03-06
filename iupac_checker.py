@@ -1,6 +1,6 @@
 def checker(guess, IUPAC_data):
     if guess == IUPAC_data: 
-        print("Correct")
+        return True
     else: 
-        print("Wrong!")
+        return False
        
