@@ -8,7 +8,12 @@ def get_data(difficulty):
     image = get_image_data(cid)
     name = get_iupac(cid)
     return image, name 
-    
+
+def get_data_DEBUG(cid):
+    image = get_image_data(cid)
+    name = get_iupac(cid)
+    return image, name, cid
+
 def get_image_data(cid):
     png = get_png(cid)
     image = bytes_to_base64(png)
@@ -16,8 +21,10 @@ def get_image_data(cid):
     return image
 
 def get_iupac(cid):
+    print(f"THE CID IS {cid}")
     try:
         iupac = requests.get('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/'+str(cid)+'/property/IUPACName/json').json()
+        print(iupac)
     except HTTPError as http_error:
         return(f'HTTP error occured: {http_error}')
     except Exception as err:

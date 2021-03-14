@@ -4,7 +4,6 @@ def cid(difficulty):
     cid_list = get_cid_list(difficulty)
     random.shuffle(cid_list)
     for elem in cid_list:
-        print(elem)
         return elem
 
 def get_cid_list(difficulty):
