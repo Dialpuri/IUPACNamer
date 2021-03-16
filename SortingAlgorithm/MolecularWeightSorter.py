@@ -1,34 +1,33 @@
-import json 
-from requests.exceptions import HTTPError
-import requests
-import time
+import json
 
-def request_api(cid):
-    try:
-        iupac = requests.get('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/'+str(cid)+'/property/IUPACName,MolecularWeight/json').json()
-    except HTTPError as http_error:
-        return(f'HTTP error occured: {http_error}')
-    except Exception as err:
-        return(f'Other error has occured: {err}')
-    else:
-        try: 
-            iupac_json = iupac['PropertyTable']['Properties'][0]
-        except NameError as name_error:
-            print(f'Name error occured: {name_error}')
-        except:
-            print("An error has occured")
+easy = []
+medium = []
+hard = []
+insane = []
+
+with open('data.txt','r') as data_file:
+    json_data = json.load(data_file)
+
+    for entry in json_data:
+        if entry['MolecularWeight'] <= 150:
+            easy.append(entry['CID'])
+        elif entry['MolecularWeight'] > 150 and entry['MolecularWeight'] <= 300:
+            medium.append(entry['CID'])
+        elif entry['MolecularWeight'] > 300 and entry['MolecularWeight'] < 500:
+            hard.append(entry['CID'])
         else:
-            return iupac_json
+            insane.append(entry['CID'])
 
-def cid_incremeneter():
-    data_to_dump = []
-    for cid in range(1,1000):
-        json_data = request_api(cid)
-        data_to_dump.append(json_data)
-        print(cid)
-        time.sleep(0.2)
-    
-    with open('data.txt','w') as data_file:
-        json.dump(data_to_dump, data_file)
+with open('easy.txt','w') as easy_file:
+    json.dump(easy, easy_file)
 
-cid_incremeneter()
+with open('medium.txt','w') as medium_file:
+    json.dump(medium, medium_file)
+
+with open('hard.txt','w') as hard_file:
+    json.dump(hard, hard_file)
+
+with open('insane.txt','w') as insane_file:
+    json.dump(insane, insane_file)
+
+print("-----------------------DUMP COMPELETED---------------------------")
