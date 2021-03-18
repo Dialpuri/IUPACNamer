@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} IUPAC Namer {%endblock%}
+{% block navTitle %} IUPAC Namer {%endblock%}
+
+
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+<h2 class = "header">What is the IUPAC name for this molecule?</h2>
+<link href = "{{ url_for('static', filename='css/index.css') }}" rel = "stylesheet" type = "text/css"/> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/test.js') }}" ></script>
+
+
+<div class = "container" id = "container">
+  <p></p>
+
+  {{cid}}
+  <div style="width:50%" class = "image">  
+    <img src = '{{image}}'/>
+  </div>
+  <div style="width:50%" class = "image">  
+      <input class = "input" name = "guess" id = "guessInput"/>
+      <button type="submit" id = "guessSubmit">Submit your guess</button>
+  </div>
+</div>
+{%endblock%}

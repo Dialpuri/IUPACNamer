@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, session, url_for, redirect, j
 from forms import IUPACChecker
 import iupac_checker
 import pubchem_api as api
-import cid_sorter as sorter
 
 app = Flask(__name__)
 

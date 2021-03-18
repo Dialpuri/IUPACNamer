@@ -1,18 +1,20 @@
 import random
 
+cid_index = 0
+
 def cid(difficulty):
     cid_list = get_cid_list(difficulty)
-    random.shuffle(cid_list)
-    for elem in cid_list:
-        return elem
+    global cid_index 
+    cid_index += 1
+    return cid_list[cid_index]
 
-def get_cid_list(difficulty):
-    if difficulty == "easy":
-        return ["1", "2", "3"]
-    elif difficulty == "medium":
-        return ["4", "5", "6"]
-    elif difficulty == "hard":
-        return ["7", "8", "9"]
-    else:
-        print("The difficulty is not defined!")
-        return ["error"]
+def get_cid_list(fileName):
+    try:
+        with open(f'{fileName}.txt','r') as cid_file:
+                cid_file_read = cid_file.read()
+                cid_file_split = cid_file_read.split(' ')
+                for i, j in enumerate(cid_file_split):
+                    cid_file_split[i] = j.replace(',','')
+                return cid_file_split
+    except:
+        return ['There was an error']
